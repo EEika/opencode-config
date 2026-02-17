@@ -1,0 +1,61 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "github-copilot/claude-opus-4.6",
+  "compaction": {
+    "auto": true,
+    "prune": true
+  },
+  "mcp": {
+    "atlassian": {
+      "enabled": false,
+      "command": [
+        "npx",
+        "-y",
+        "mcp-remote",
+        "https://mcp.atlassian.com/v1/mcp"
+      ],
+      "timeout": 15000,
+      "type": "local"
+    },
+    "splash-ui": {
+      "enabled": false,
+      "command": [
+        "npx",
+        "@sparebankenvest/splash-mcp"
+      ],
+      "timeout": 10000,
+      "type": "local"
+    }
+  },
+  "provider": {
+    "ollama": {
+      "models": {
+        "qwen3-coder": {
+          "tool_call": true,
+          "name": "qwen3-coder"
+        },
+        "codegemma:latest": {
+          "tool_call": true,
+          "name": "codegemma:latest"
+        },
+        "deepseek-coder:latest": {
+          "tool_call": true,
+          "name": "deepseek-coder:latest"
+        },
+        "qwen2.5-coder:latest": {
+          "tool_call": true,
+          "name": "qwen2.5-coder:latest"
+        }
+      },
+      "name": "Ollama (local)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      }
+    }
+  },
+  "tools": {
+    "atlassian_*": false,
+    "splash-ui_*": false
+  }
+}
